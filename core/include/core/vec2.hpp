@@ -22,7 +22,7 @@ namespace core {
         [[nodiscard]] constexpr float lengthSq() const noexcept { return x * x + y * y; }
         [[nodiscard]] float length() const noexcept { return std::sqrt(lengthSq()); }
 
-        [[nodiscard]] Vec2 normalized() noexcept { 
+        [[nodiscard]] Vec2 normalized() const noexcept { 
             const float len = length();
             if (len <= 0.0f) {
                 return {0.0f, 0.0f};

@@ -26,4 +26,5 @@ set(BUILD_GAMES    OFF CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(raylib)
 
 add_subdirectory(core)
+add_subdirectory(physics)
 add_subdirectory(demo)

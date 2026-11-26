@@ -1,3 +1,3 @@
 # demo/CMakeLists.txt
 add_executable(demo src/main.cpp)
-target_link_libraries(demo PRIVATE core raylib)
+target_link_libraries(demo PRIVATE core physics raylib)
