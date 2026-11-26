@@ -7,6 +7,8 @@
 #include "core/config.hpp"
 #include <cstddef>
 #include <memory>
+#include <span>
+#include "physics/contact.hpp"
 
 namespace physics{
 
@@ -16,6 +18,7 @@ namespace physics{
         Shape      shape{Circle{}};
         float      friction{0.4f};
         float      restitution{0.2f};
+        core::Vec2 velocity{};
     };
 
     struct BodySnapshot {
@@ -39,6 +42,8 @@ namespace physics{
         [[nodiscard]] std::optional<BodySnapshot> state(BodyId id) const;
         [[nodiscard]] const Shape* shape(BodyId id) const;
         [[nodiscard]] std::size_t  bodyCount() const noexcept;
+        [[nodiscard]] std::span<const Contact> contacts() const noexcept;
+
 
     private:
         struct Impl;

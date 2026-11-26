@@ -40,13 +40,20 @@ concept BodyLike = requires(T& body) {
     { body.invMass }         -> std::convertible_to<float>;
 };
 
-template<BodyLike B>
-void integrate(B& body, core::Vec2 gravity, float dt) noexcept {
-    if (body.invMass == 0.0f) return;
 
+template<BodyLike B>
+void integrateVelocity(B& body, core::Vec2 gravity, float dt) noexcept {
+    if (body.invMass == 0.0f) return;
     body.velocity += gravity * dt;
+}
+
+template<BodyLike B>
+void integratePosition(B& body, float dt) noexcept {
+    if (body.invMass == 0.0f) return;
     body.position += body.velocity * dt;
     body.angle += body.angularVelocity * dt;
+
 }
+
 
 }
